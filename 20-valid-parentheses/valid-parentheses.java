@@ -1,42 +1,25 @@
-import java.util.Stack;
-
 class Solution {
-
     public boolean isValid(String s) {
-
+        int n = s.length();
+        if(n%2 == 1) return false;
         Stack<Character> st = new Stack<>();
-
-        for (int i = 0; i < s.length(); i++) {
-
+        for(int i=0; i<n;i++){
             char ch = s.charAt(i);
-
-            // Opening brackets
-            if (ch == '(' || ch == '{' || ch == '[') {
-                st.push(ch);
-            }
-
-            // Closing brackets
-            else {
-
-                // Stack empty
-                if (st.isEmpty()) {
-                    return false;
-                }
-
-                // Matching check
-                if ((ch == ')' && st.peek() == '(') ||
-                    (ch == '}' && st.peek() == '{') ||
-                    (ch == ']' && st.peek() == '[')) {
-
-                    st.pop();
-                }
-                else {
-                    return false;
-                }
+            if(ch=='(' || ch=='{' || ch == '[') st.push(ch);
+            else{
+                if(st.size()==0) return false;
+                char top = st.peek();
+                if(sameStyle(top, ch)) st.pop();
+                else return false;
             }
         }
-
-        // Stack should be empty
         return st.isEmpty();
+        
+    }
+    public boolean sameStyle(char a, char b){
+        if(a=='(' && b==')') return true;
+        if(a=='{' && b=='}') return true;
+        if(a=='[' && b==']') return true;
+        return false;
     }
 }
