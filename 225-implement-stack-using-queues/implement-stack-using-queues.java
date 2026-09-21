@@ -1,4 +1,4 @@
-// add efficient approach
+//pop and peek efficient approach;
 
 class MyStack {
     Queue<Integer> q = new LinkedList<>();
@@ -8,32 +8,27 @@ class MyStack {
     }
     
     public void push(int x) {
+        int n = q.size();
         q.add(x);
-        
+        for(int i=0; i<n;i++){
+            q.add(q.remove());
+        }
+  
     }
     
     public int pop() {
-        int n = q.size();
-        for(int i=1; i<=n-1;i++){
-            q.add(q.remove());
-        }
         return q.remove();
         
     }
     
     public int top() {
-        int n = q.size();
-        for(int i=1;i<=n-1;i++){
-            q.add(q.remove());
-        }
-        int p = q.peek();
-        q.add(q.remove());
-        return p;
+        return q.peek();
         
     }
     
     public boolean empty() {
         return (q.size()==0);
+
         
     }
 }
