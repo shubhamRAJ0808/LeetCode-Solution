@@ -1,29 +1,41 @@
 class Solution {
-    public int[] findIntersectionValues(int[] nums1, int[] nums2) {
+    public int[] findIntersectionValues(int[] arr, int[] brr) {
+        Arrays.sort(arr);
+        Arrays.sort(brr);
+
+        int n = arr.length;
+        int m = brr.length;
 
         int count1 = 0;
         int count2 = 0;
-
-        // Count for nums1
-        for (int i = 0; i < nums1.length; i++) {
-            for (int j = 0; j < nums2.length; j++) {
-                if (nums1[i] == nums2[j]) {
-                    count1++;
-                    break;  // found once, move to next element
-                }
+        //count in arr
+        for(int i=0;i<n;i++){
+            if(binarySearch(brr, arr[i])){
+                count1++;
             }
         }
-
-        // Count for nums2
-        for (int i = 0; i < nums2.length; i++) {
-            for (int j = 0; j < nums1.length; j++) {
-                if (nums2[i] == nums1[j]) {
-                    count2++;
-                    break;  
-                }
+        //count in brr
+        for(int i=0;i<m;i++){
+            if(binarySearch(arr, brr[i])){
+                count2++;
             }
-        }
+        
 
-        return new int[]{count1, count2};
+
+        }
+        return new int[]{count1,count2};
+    }
+
+
+    public boolean binarySearch(int[] arr, int target){
+        int low = 0;
+        int high = arr.length-1;
+        while(low<=high){
+            int mid = low + (high-low)/2;
+            if(arr[mid]==target) return true;
+            else if( arr[mid] < target) low = mid+1;
+            else high = mid-1;
+        }
+        return false;
     }
 }
