@@ -13,17 +13,15 @@ class Solution {
                 min = arr[i];
             }
         }
-        for(int i=min; i<= max; i++){
-            set.add(i);
+        for(int ele : arr) set.add(ele);
+        for(int i=min;i<=max;i++){
+            if(!set.contains(i)) ans.add(i);
+            
         }
-        for(int i=0;i<n;i++){
-            if(set.contains(arr[i])) set.remove(arr[i]);
-            //else ans.add(arr[i]);
-        }
-        for(int num : set){
-            ans.add(num);
-        }
-        Collections.sort(ans);
+        // for(int num : set){
+        //     ans.add(num);
+        // }
+        // Collections.sort(ans);
         return ans;
         
         
