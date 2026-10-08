@@ -1,21 +1,12 @@
 class Solution {
-    public int[] shuffle(int[] arr, int n) {
-        ArrayList<Integer> list = new ArrayList<>();
-        for(int i=0;i<n;i++){
-            if(i%2==0){
-                list.add(arr[i]);
-                list.add(arr[n+i]);
-            }
-            else{
-                list.add(arr[i]);
-                list.add(arr[n+i]);
-            }
+    public int[] shuffle(int[] nums, int n) {
+        int[] a = new int[2 * n];
+        int idx = 0;
+        for(int i=0; i<2*n; i+=2){
+            a[i] = nums[idx];
+            a[i+1] = nums[idx+n];
+            idx+=1;
         }
-        int[] brr = new int[list.size()];
-        for(int i=0;i<list.size();i++){
-            brr[i] = list.get(i);
-        }
-        return brr;
-
+        return a;
     }
 }
