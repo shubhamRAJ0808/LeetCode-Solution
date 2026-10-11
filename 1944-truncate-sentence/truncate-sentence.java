@@ -1,0 +1,13 @@
+class Solution {
+    public String truncateSentence(String s, int k) {
+        String[] word = s.split(" ");
+        StringBuilder sb = new StringBuilder();
+        int count =0;
+        for(int i=0; i<k;i++){
+            sb.append(word[i]);
+            if(i<k-1) sb.append(" ");
+        }
+        return sb.toString();
+        
+    }
+}
