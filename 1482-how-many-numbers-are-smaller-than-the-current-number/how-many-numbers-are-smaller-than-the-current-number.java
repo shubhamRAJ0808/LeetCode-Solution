@@ -15,9 +15,10 @@ class Solution {
             ans.add(count);
         }
 
-        int[] finalArr = ans.stream()
-                            .mapToInt(Integer::intValue)
-                            .toArray();
+        int[] finalArr = new int[ans.size()];
+        for(int i=0;i<ans.size();i++){
+            finalArr[i] = ans.get(i);
+        }
 
         return finalArr;
     }
