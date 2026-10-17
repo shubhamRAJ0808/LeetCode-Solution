@@ -10,7 +10,7 @@ class Solution {
         int l = freq['l'-'a']/2;
         int o = freq['o'-'a']/2;
         int n = freq['n'-'a'];
-        return Math.min(b,Math.min(a,Math.min(n,Math.min(l,o))));
+        return Math.min(b,Math.min(a,Math.min(l,Math.min(o,n))));
         
     }
 }
