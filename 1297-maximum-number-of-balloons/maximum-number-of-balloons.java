@@ -1,10 +1,9 @@
 class Solution {
     public int maxNumberOfBalloons(String text) {
         int[] freq = new int[26];
-        for(int i=0;i<text.length();i++){
-            char ch = text.charAt(i);
-            freq[ch-'a']++;
-        }
+        for(char c : text.toCharArray())
+            freq[c-'a']++;
+        
         int b = freq['b'-'a'];
         int a = freq['a'-'a'];
         int l = freq['l'-'a']/2;
