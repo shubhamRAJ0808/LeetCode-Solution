@@ -4,8 +4,8 @@ class Solution {
         for(int i=0;i<s.length();i++){
             result[indices[i]]=s.charAt(i);
         }
-        String t = new String(result);
-        return t;
+        return new String(result);
+        
         
     }
 }
